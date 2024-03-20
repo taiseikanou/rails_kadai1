@@ -1,5 +1,6 @@
 <h3>ユーザー情報一覧</h3>
 <p><%= link_to "ユーザー新規登録", :new_post %></p>
+
 <table>
   <thead>
     <tr>
@@ -22,7 +23,8 @@
         <td><%= post.all_day %></td>
         <td><%= post.updated_at %></td>
         <td><%= link_to "詳細", post %></td>
-        
+        <td><%= link_to "編集", [:edit, post] %></td>
+
       </tr>
     <% end %>
   </tbody>
