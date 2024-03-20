@@ -1,0 +1,22 @@
+<div>
+    <li><%= link_to "一覧に戻る", :posts %></li>
+</div>
+<h3><%= @post.title %></h3>
+<table>
+  <tr>
+    <th>開始日</th>
+    <td><%= @post.start_date %></td>
+  </tr>
+  <tr>
+    <th>終了日</th>
+    <td><%= @post.end_date %></td>
+  </tr>
+  <tr>
+    <th>終日</th>
+    <td><%= @post.all_day %></td>
+  </tr>
+  <tr>
+    <th>スケジュールメモ</th>
+    <td><%= @post.memo %></td>
+  </tr>
+</table>
