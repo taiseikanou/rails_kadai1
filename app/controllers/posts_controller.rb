@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params.require(:post).permit(:title, :start_date, :end_date, :all_day, :memo))
       if @post.save
+        flash[:notice] = "ユーザーを新規登録しました"
         redirect_to :posts
         else
         render "new"
