@@ -28,7 +28,8 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post = Post.update(params.require(:post).permit(:title, :start_date, :end_date, :all_day, :memo))
-       redirect_to :posts
+      flash[:notice] = "ユーザーIDが「#{@post.id}」の情報を更新しました"
+      redirect_to :posts
     else
       render "edit"
     end

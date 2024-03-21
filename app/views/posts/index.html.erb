@@ -21,10 +21,10 @@
       <tr>
         <td><%= post.id %></td>
         <td><%= post.title %></td>
-        <td><%= post.start_date %></td>
-        <td><%= post.end_date %></td>
-        <td><%= post.all_day %></td>
-        <td><%= post.updated_at %></td>
+        <td><%= "#{post.start_date.year}年 #{post.start_date.month}月 #{post.start_date.day}日" %></td>
+        <td><%= "#{post.end_date.year}年 #{post.end_date.month}月 #{post.end_date.day}日" %></td>
+        <td><%= post.all_day ? "◯" : "" %></td>
+        <td><%= post.updated_at.to_s(:datetime_jp) %></td>
         <td><%= link_to "詳細", post %></td>
         <td><%= link_to "編集", [:edit, post] %></td>
         <td><%= link_to "削除",  post_path(post.id), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
