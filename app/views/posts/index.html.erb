@@ -1,11 +1,13 @@
 <h3>予定一覧</h3>
-<p><%= link_to "新規追加", :new_post %></p>
+<div class="d-flex justify-content-end mb-3">
+  <%= link_to "新規追加", :new_post, class: "btn btn-primary" %>
+</div>
 
 <% if flash[:notice] %>
       <p class="notice"><%= flash[:notice] %></p>
 <% end %>
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
       <th>ID</th>
       <th>タイトル</th>
@@ -13,6 +15,7 @@
       <th>終了日</th>
       <th>終日</th>
       <th>更新日時</th>
+      <th>操作</th>
     </tr>
   </thead>
 
@@ -25,12 +28,13 @@
         <td><%= "#{post.end_date.year}年 #{post.end_date.month}月 #{post.end_date.day}日" %></td>
         <td><%= post.all_day ? "◯" : "" %></td>
         <td><%= post.updated_at.to_s(:datetime_jp) %></td>
-        <td><%= link_to "詳細", post %></td>
-        <td><%= link_to "編集", [:edit, post] %></td>
-        <td><%= link_to "削除",  post_path(post.id), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+        <td>
+          <%= link_to "詳細", post, class: "btn btn-info btn-sm mr-1" %>
+          <%= link_to "編集", [:edit, post], class: "btn btn-warning btn-sm mr-1" %>
+          <%= link_to "削除", post_path(post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 
