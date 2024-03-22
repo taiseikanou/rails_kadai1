@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
     validates :start_date, presence: true
     validates :end_date, presence: true
+    validates :title, presence: true
     validates :title, length: {maximum:20}
     validates :memo, length: {maximum:500}
     validate :end_date_after_start_date
@@ -10,5 +11,6 @@ class Post < ApplicationRecord
         errors.add(:end_date, "must be after start date") if end_date.present?
       end
     end
+    
     
 end
