@@ -1,24 +1,32 @@
-<div>
-    <li><%= link_to "一覧に戻る", :posts %></li>
-</div>
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "一覧に戻る", :posts %></li>
+    </ol>
+  </nav>
 
-<td><%= link_to "編集", [:edit, @post] %></td>
-<h3><%= @post.title %></h3>
-<table>
-  <tr>
-    <th>開始日</th>
-    <td><%= @post.start_date %></td>
-  </tr>
-  <tr>
-    <th>終了日</th>
-    <td><%= @post.end_date %></td>
-  </tr>
-  <tr>
-    <th>終日</th>
-    <td><%= @post.all_day %></td>
-  </tr>
-  <tr>
-    <th>スケジュールメモ</th>
-    <td><%= @post.memo %></td>
-  </tr>
-</table>
+  <h3><%= @post.title %></h3>
+
+  <table class="table table-bordered DetailTable">
+    <tbody>
+      <tr>
+        <th scope="row">開始日</th>
+        <td><%= @post.start_date %></td>
+      </tr>
+      <tr>
+        <th scope="row">終了日</th>
+        <td><%= @post.end_date %></td>
+      </tr>
+      <tr>
+        <th scope="row">終日</th>
+        <td><%= @post.all_day %></td>
+      </tr>
+      <tr>
+        <th scope="row">スケジュールメモ</th>
+        <td><%= @post.memo %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= link_to "編集", [:edit, @post], class: "btn btn-primary" %>
+</div>
