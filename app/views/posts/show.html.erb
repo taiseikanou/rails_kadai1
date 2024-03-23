@@ -5,23 +5,25 @@
     </ol>
   </nav>
 
-  <div class="row">
-    <div class="col-md-6">
+ 
+    <div class="show">
+      <div class="edit text-right">
+        <%= link_to "編集", [:edit, @post], class: "btn btn-primary" %>
+      </div>
       <h3><%= @post.title %></h3>
-
       <table class="table table-bordered DetailTable">
         <tbody>
           <tr>
             <th scope="row">開始日</th>
-            <td><%= @post.start_date %></td>
+            <td><%= "#{@post.start_date.year}年 #{@post.start_date.month}月 #{@post.start_date.day}日" %></td>
           </tr>
           <tr>
             <th scope="row">終了日</th>
-            <td><%= @post.end_date %></td>
+            <td><%= "#{@post.end_date.year}年 #{@post.end_date.month}月 #{@post.end_date.day}日" %></td>
           </tr>
           <tr>
             <th scope="row">終日</th>
-            <td><%= @post.all_day %></td>
+            <td><%= @post.all_day ? "◯" : "" %></td>
           </tr>
           <tr>
             <th scope="row">スケジュールメモ</th>
@@ -29,11 +31,5 @@
           </tr>
         </tbody>
       </table>
-    </div>
-
-    <div class="col-md-6 text-right">
-      <%= link_to "編集", [:edit, @post], class: "btn btn-primary" %>
-    </div>
   </div>
 </div>
-

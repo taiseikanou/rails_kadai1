@@ -1,41 +1,55 @@
-<h3>予定一覧</h3>
-<div class="d-flex justify-content-end mb-3">
-  <%= link_to "新規追加", :new_post, class: "btn btn-primary" %>
-</div>
+<div class="container">
+  <h3>予定一覧</h3>
 
-<% if flash[:notice] %>
-      <p class="notice"><%= flash[:notice] %></p>
-<% end %>
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th>ID</th>
-      <th>タイトル</th>
-      <th>開始日</th>
-      <th>終了日</th>
-      <th>終日</th>
-      <th>更新日時</th>
-      <th>操作</th>
-    </tr>
-  </thead>
+  <div class="row justify-content-end mb-3">
+    <div class="col-auto">
+      <%= link_to "新規追加", :new_post, class: "btn btn-primary" %>
+    </div>
+  </div>
 
-  <tbody>
-    <% @posts.each do |post| %>
+  <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <table class="table">
+    <thead class="thead-dark">
       <tr>
-        <td><%= post.id %></td>
-        <td><%= post.title %></td>
-        <td><%= "#{post.start_date.year}年 #{post.start_date.month}月 #{post.start_date.day}日" %></td>
-        <td><%= "#{post.end_date.year}年 #{post.end_date.month}月 #{post.end_date.day}日" %></td>
-        <td><%= post.all_day ? "◯" : "" %></td>
-        <td><%= post.updated_at.to_s(:datetime_jp) %></td>
-        <td>
-          <%= link_to "詳細", post, class: "btn btn-info btn-sm mr-1" %>
-          <%= link_to "編集", [:edit, post], class: "btn btn-warning btn-sm mr-1" %>
-          <%= link_to "削除", post_path(post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
-        </td>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>終日</th>
+        <th>更新日時</th>
+        <th>操作</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<p>予定合計 <%= @posts.size %>件 本日の日付<%= Date.today.strftime("%Y年 %m月 %d日") %></p>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.id %></td>
+          <td><%= post.title %></td>
+          <td><%= "#{post.start_date.year}年 #{post.start_date.month}月 #{post.start_date.day}日" %></td>
+          <td><%= "#{post.end_date.year}年 #{post.end_date.month}月 #{post.end_date.day}日" %></td>
+          <td><%= post.all_day ? "◯" : "" %></td>
+          <td><%= post.updated_at.to_s(:datetime_jp) %></td>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to "詳細", post, class: "btn btn-info btn-sm" %>
+              <%= link_to "編集", [:edit, post], class: "btn btn-warning btn-sm" %>
+              <%= link_to "削除", post_path(post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="mb-0">予定合計 <%= @posts.size %>件 本日の日付 <%= Date.today.strftime("%Y年 %m月 %d日") %></p>
+    </div>
+  </footer>
+</div>
