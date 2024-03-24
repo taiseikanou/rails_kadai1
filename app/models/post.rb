@@ -11,6 +11,4 @@ class Post < ApplicationRecord
         errors.add(:end_date, "は開始日以降の日付で選択してください。") if end_date.present?
       end
     end
-    
-    
 end
