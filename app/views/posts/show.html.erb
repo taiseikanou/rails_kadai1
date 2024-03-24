@@ -1,0 +1,34 @@
+<div class="container">
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "一覧に戻る", :posts %></li>
+    </ol>
+  </nav>
+
+    <div class="show">
+      <div class="edit text-right">
+        <%= link_to "編集", [:edit, @post], class: "btn btn-primary" %>
+      </div>
+      <h3><%= @post.title %></h3>
+    <table class="table table-bordered DetailTable">
+      <tbody>
+        <tr>
+          <th scope="row">開始日</th>
+          <td><%= "#{@post.start_date.year}年 #{@post.start_date.month}月 #{@post.start_date.day}日" %></td>
+        </tr>
+        <tr>
+          <th scope="row">終了日</th>
+          <td><%= "#{@post.end_date.year}年 #{@post.end_date.month}月 #{@post.end_date.day}日" %></td>
+        </tr>
+        <tr>
+          <th scope="row">終日</th>
+          <td><%= @post.all_day ? "◯" : "" %></td>
+        </tr>
+        <tr>
+          <th scope="row">スケジュールメモ</th>
+          <td><%= @post.memo %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
